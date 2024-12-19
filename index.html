@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animales del Mundo</title>
+</head>
+<style>
+    body {
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+  }
+  *{
+    text-align: center;
+  }
+
+</style>
+<body>
+  <div id="app">
+    <h1>Lista de Animales</h1>
+    <ul>
+      <li v-for="animal in paginatedAnimales" :key="animal.id">
+        <img :src="animal.imagen" :alt="animal.animal" width="100" height="100" />
+        <div>
+          <strong>{{ animal.animal }}</strong> ({{ animal.id }} )
+          <br>
+          {{ animal.country }}, {{ animal.continent }}
+        </div>
+      </li>
+    </ul>
+    <div class="pagination">
+      <button @click="prevPage" :disabled="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
